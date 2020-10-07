@@ -1,29 +1,8 @@
 <template>
   <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        app-ssr-nuxt
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+    <b-icon icon="arrow-up" font-scale="5" />
+    <b-icon icon="bug" font-scale="10" />
+    <b-icon icon="battery-full" style="color: #7952b3;" font-scale="5" />
   </div>
 </template>
 
