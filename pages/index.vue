@@ -2,51 +2,18 @@
   <div class="container">
     <b-icon icon="arrow-up" font-scale="5" />
     <b-icon icon="bug" font-scale="10" />
-    <b-icon icon="battery-full" style="color: #7952b3;" font-scale="5" />
+    <b-icon icon="battery-full" variant="brand" font-scale="5" />
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'Index'
+}
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+<style lang="scss" scoped>
+.container{
+  background-color: $primario;
 }
 </style>

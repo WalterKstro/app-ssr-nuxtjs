@@ -14,6 +14,7 @@ export default {
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
+    '@/assets/main.scss'
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
@@ -32,13 +33,20 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     // https://go.nuxtjs.dev/bootstrap
-    'bootstrap-vue/nuxt'
+    'bootstrap-vue/nuxt',
+    '@nuxtjs/style-resources'
   ],
   bootstrapVue: {
-    icons: true // Install the IconsPlugin (in addition to BootStrapVue plugin
+    icons: true // Install the IconsPlugin (in addition to BootStrapVue plugin)
+  },
+  styleResources: {
+    scss: [
+      'assets/_variables.scss'
+    ]
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+    extractCSS: true
   }
 }
