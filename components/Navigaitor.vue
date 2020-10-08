@@ -53,9 +53,14 @@ export default {
 
 <style lang="scss" scoped>
 .main--nav{background-color: $primary-brand;}
-.brand{width: 30vmin;}
+.brand{width: 170px;}
 .social--icons{
-  &_link{width: 6vmin;}
+  &_link{
+    width: 33px;
+    @media screen and (max-width: 768px) {
+      width: 20px;
+    }
+  }
 }
 .nav--item > *{
   color: $white !important;
