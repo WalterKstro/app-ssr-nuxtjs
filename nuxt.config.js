@@ -34,7 +34,39 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: "AIzaSyD8AfL5wm4jt5HUA5DCiLAAu4__NKeozIw",
+          authDomain: "vets-pets.firebaseapp.com",
+          databaseURL: "https://vets-pets.firebaseio.com",
+          projectId: "vets-pets",
+          storageBucket: "vets-pets.appspot.com",
+          messagingSenderId: "1021489739055",
+          appId: "1:1021489739055:web:b34869feb4e9637ddd5dda",
+          measurementId: "G-N6E3HWEXM6"
+        },
+        services: {
+          auth: {
+            persistence: 'session', // default
+            initialize: {
+              onAuthStateChangedMutation: 'auth/ON_AUTH_STATE_CHANGED_MUTATION',
+              onAuthStateChangedAction: 'auth/onAuthStateChangedAction'
+            },
+            ssr: true // default
+          },
+          firestore: {
+            memoryOnly: false, // default
+            static: false, // default
+            preload: false, // default
+            chunkName: process.env.NODE_ENV !== 'production' ? 'firebase-auth' : '[id]', // default
+            enablePersistence: true
+          }
+        }
+      }
+    ]
   ],
   bootstrapVue: {
     icons: true // Install the IconsPlugin (in addition to BootStrapVue plugin)
@@ -43,6 +75,9 @@ export default {
     scss: [
       'assets/_variables.scss'
     ]
+  },
+  router: {
+    middleware: ['authentication']
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)

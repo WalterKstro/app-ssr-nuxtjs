@@ -1,4 +1,6 @@
-export const state = () => ({})
+export const state = () => ({
+  authenticated: null
+})
 
 export const mutations = {}
 
