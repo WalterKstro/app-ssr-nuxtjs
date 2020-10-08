@@ -56,7 +56,7 @@ export default {
 .brand{width: 170px;}
 .social--icons{
   &_link{
-    width: 33px;
+    width: 35px;
     @media screen and (max-width: 768px) {
       width: 20px;
     }
