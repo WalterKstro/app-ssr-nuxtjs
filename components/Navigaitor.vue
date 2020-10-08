@@ -11,7 +11,7 @@
           <b-navbar-toggle target="nav-collapse" />
           <!--MAIN NAV-->
           <b-collapse id="nav-collapse" is-nav>
-            <b-navbar-nav class="nav--list">
+            <b-navbar-nav class="text-center nav--list">
               <b-nav-item v-for="link in links" :key="link.id" class="nav--item">
                 {{ link.name }}
               </b-nav-item>
@@ -19,7 +19,7 @@
 
             <!-- Right aligned nav items -->
             <!--SOCIAL NAV-->
-            <b-navbar-nav class="social--icons ml-auto">
+            <b-navbar-nav class="d-flex flex-row justify-content-around social--icons ml-md-auto">
               <b-nav-item class="social--icons_link">
                 <img src="@/assets/media/facebook.svg" alt="Logo de la empresa">
               </b-nav-item>

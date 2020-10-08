@@ -1,9 +1,11 @@
 <template>
   <div class="app">
+    <!--COMPONENT HEADER-->
     <header>
-      <Navigaitor />
+      <Nav />
     </header>
     <main>
+      <!--MAIN-->
       <b-container>
         <Nuxt />
       </b-container>
@@ -11,11 +13,11 @@
   </div>
 </template>
 <script>
-import Navigaitor from '@/components/Navigaitor'
+import Nav from '@/components/Navigaitor'
 export default {
   name: 'DefaultTemplate',
   components: {
-    Navigaitor
+    Nav
   }
 }
 </script>
