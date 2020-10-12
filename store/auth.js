@@ -84,6 +84,23 @@ export const actions = {
       return
     }
     await commit('ON_AUTH_STATE_CHANGED_MUTATION', authUser)
+  },
+  /**
+   * CLOSE SESSION IN AUTH FIREBASE
+   * @param commit
+   * @returns {Promise<void>}
+   */
+  async signOutSession ({ commit }) {
+    // eslint-disable-next-line no-useless-catch
+    try {
+      await this.$fireAuthUnsubscribe()
+      await this.$fireAuth.signOut()
+      await Coockie.remove('access_token')
+      await this.$router.push('/')
+      commit('SAVE_TO_ACCOUNT_STATE', null)
+    } catch (e) {
+      throw e
+    }
   }
 }
 
