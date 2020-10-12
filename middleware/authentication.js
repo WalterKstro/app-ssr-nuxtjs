@@ -4,6 +4,6 @@ export default function ({ store, redirect, route }) {
 
   // If the user is not authenticated
   if (!user && route.path.match(blockedRoute)) {
-    return redirect('/signUp')
+    return redirect('/')
   }
 }
