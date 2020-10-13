@@ -6,9 +6,7 @@
     </header>
     <main>
       <!--MAIN-->
-      <b-container>
-        <Nuxt />
-      </b-container>
+      <Nuxt />
     </main>
   </div>
 </template>

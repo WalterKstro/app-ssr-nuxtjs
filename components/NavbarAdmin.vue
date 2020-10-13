@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.main--nav{background-color: $primary-brand;}
+.main--nav{background-color: $dark;}
 .brand{width: 170px;}
 .btn__sidebar{
   background-color: transparent;

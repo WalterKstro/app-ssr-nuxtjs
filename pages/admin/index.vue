@@ -1,5 +1,7 @@
 <template>
-  <h1>{{ currentAccount.email }}</h1>
+  <h1 v-if="currentAccount != null">
+    {{ currentAccount.email }}
+  </h1>
 </template>
 
 <script>

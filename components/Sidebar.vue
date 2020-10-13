@@ -6,18 +6,12 @@
     backdrop
     shadow
   >
-    <template v-slot:default="{ hide }">
+    <template v-slot:default>
       <div class="p-3 h-100">
         <nav class="mb-3">
           <b-nav vertical>
-            <b-nav-item active @click="hide">
-              Active
-            </b-nav-item>
-            <b-nav-item href="#link-1" @click="hide">
-              Link
-            </b-nav-item>
-            <b-nav-item href="#link-2" @click="hide">
-              Another Link
+            <b-nav-item v-for="link in links" :key="link.id" :to="link.path">
+              {{ link.name }}
             </b-nav-item>
           </b-nav>
         </nav>
@@ -40,7 +34,12 @@ export default {
   name: 'Sidebar',
   data () {
     return {
-      variant: 'dark'
+      variant: 'dark',
+      links: [
+        { name: 'Servicios', path: '/admin/servicios' },
+        { name: 'Productos', path: '/admin/productos' },
+        { name: 'Crear usuario', path: '/admin/cuenta' }
+      ]
     }
   },
   methods: {
