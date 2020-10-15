@@ -1,11 +1,24 @@
 export const state = () => ({
-  file: null,
-  errorLoad: ''
+  errorLoad: '',
+  data: []
 })
 
 export const mutations = {
-  setError (state, error) {
+  /**
+   * SET ERROR TO STATE
+   * @param state
+   * @param error
+   */
+  SET_ERROR (state, error) {
     state.errorLoad = error
+  },
+  /**
+   * SET ALL COLLECTION TO STATE
+   * @param state
+   * @param services
+   */
+  SET_SERVICES (state, payload) {
+    state.data = payload
   }
 }
 
@@ -24,7 +37,7 @@ export const actions = {
       urlTemp = await refImage.getDownloadURL()
       return urlTemp
     } catch (e) {
-      commit('setError', e)
+      commit('SET_ERROR', e)
     }
   },
   /**
@@ -37,7 +50,34 @@ export const actions = {
     try {
       await this.$fireStore.collection('services').add(service)
     } catch (e) {
-      commit('setError', e)
+      commit('SET_ERROR', e)
     }
+  },
+  /**
+   * GET ALL DATA SERVICES FROM FIRESTORE
+   * @param commit
+   * @returns {Promise<void>}
+   */
+  async getServicesFirestore ({ commit }) {
+    const servicesTemp = []
+    try {
+      await this.$fireStore.collection('services').get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            const tempDoc = doc.data()
+            tempDoc.id = doc.id
+            servicesTemp.push(tempDoc)
+          })
+          commit('SET_SERVICES', servicesTemp)
+        })
+    } catch (e) {
+      commit('SET_ERROR', e)
+    }
+  }
+}
+
+export const getters = {
+  getState (state) {
+    return state.data
   }
 }

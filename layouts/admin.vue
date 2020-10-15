@@ -6,7 +6,7 @@
     </header>
     <main>
       <!--MAIN-->
-      <b-container>
+      <b-container fluid>
         <Nuxt />
       </b-container>
     </main>
