@@ -28,12 +28,42 @@
     </b-row>
     <b-row>
       <b-col cols="12">
+        <div v-if="conditionalSpiner" class="text-center">
+          <b-spinner variant="primary" label="Spinning" />
+        </div>
         <!--TABLE-->
-        <b-table striped small responsive :items="getData" :fields="fields">
+        <b-table
+          v-else
+          striped
+          small
+          responsive
+          bordered
+          :items="getData"
+          :fields="fields"
+        >
+          <!--ICON IMAGE-->
           <template v-slot:cell(imagen)="data">
             <a :href="data.value" target="_blank">
               <b-icon icon="image" />
             </a>
+          </template>
+          <!--ICON DESCRIPTION AND MODAL-->
+          <template v-slot:cell(descripcion)="data">
+            <b-btn v-b-modal="data.item.id" class="btn btn-sm" variant="primary">
+              <b-icon icon="chat-right-text" />
+            </b-btn>
+            <b-modal :id="data.item.id" centered hide-footer>
+              <p>{{ data.value }}</p>
+            </b-modal>
+          </template>
+          <!--ICONS OPTIONS-->
+          <template v-slot:cell(options)="data">
+            <b-btn class="btn-sm" variant="primary">
+              <b-icon icon="pencil-square" />
+            </b-btn>
+            <b-btn class="btn-sm" variant="danger" @click="deleteServices(data.item.id)">
+              <b-icon icon="trash" />
+            </b-btn>
           </template>
         </b-table>
       </b-col>
@@ -52,21 +82,27 @@ export default {
   },
   data () {
     return {
-      fields: ['id', 'nombre', 'precio', { key: 'imagen', label: 'Imagen' }, 'descripcion']
+      fields: ['id', 'nombre', 'precio', { key: 'imagen', label: 'Imagen' }, { key: 'descripcion', label: 'Descripción' }, { key: 'options', label: 'Operaciones' }],
+      loading: true
     }
   },
   computed: {
     ...mapGetters({
-      getData: 'services/getState'
+      getData: 'services/getState',
+      conditionalSpiner: 'services/getStateSpiner'
     })
   },
   created () {
-    this.loadData()
+    this.getServicesFirestore()
   },
   methods: {
-    ...mapActions({
-      loadData: 'services/getServicesFirestore'
-    })
+    ...mapActions('services', ['getServicesFirestore', 'deleteOneService']),
+    deleteServices (id) {
+      const response = confirm('Desea eliminar el servicio con id: ' + id)
+      if (response) {
+        this.deleteOneService(id)
+      }
+    }
   }
 }
 </script>

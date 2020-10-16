@@ -1,6 +1,7 @@
 export const state = () => ({
   errorLoad: '',
-  data: []
+  data: [],
+  stateSpiner: null
 })
 
 export const mutations = {
@@ -19,6 +20,28 @@ export const mutations = {
    */
   SET_SERVICES (state, payload) {
     state.data = payload
+  },
+  /**
+   * CHANGE STATE SPINER LOADING WHILE GET DATA
+   * COLLECTION FROM FIREBASE
+   * @param state
+   * @param payload
+   * @constructor
+   */
+  SET_STATE_SPINER (state, payload) {
+    state.stateSpiner = payload
+  },
+  /**
+   * DELETE ON SERVICE OF STATE
+   * @param state
+   * @param id
+   * @constructor
+   */
+  DELETE_SERVICE (state, id) {
+    const index = state.data.findIndex((service) => {
+      return service.id === id
+    })
+    state.data.splice(index, 1)
   }
 }
 
@@ -60,6 +83,7 @@ export const actions = {
    */
   async getServicesFirestore ({ commit }) {
     const servicesTemp = []
+    commit('SET_STATE_SPINER', true)
     try {
       await this.$fireStore.collection('services').get()
         .then((querySnapshot) => {
@@ -68,8 +92,23 @@ export const actions = {
             tempDoc.id = doc.id
             servicesTemp.push(tempDoc)
           })
-          commit('SET_SERVICES', servicesTemp)
+          commit('SET_STATE_SPINER', false)
         })
+      commit('SET_SERVICES', servicesTemp)
+    } catch (e) {
+      commit('SET_ERROR', e)
+    }
+  },
+  /**
+   * DELETE ONE SERVICE FROM FIRESTORE
+   * @param commit
+   * @param id
+   * @returns {Promise<void>}
+   */
+  async deleteOneService ({ commit }, id) {
+    try {
+      await this.$fireStore.collection('services').doc(id).delete()
+      commit('DELETE_SERVICE', id)
     } catch (e) {
       commit('SET_ERROR', e)
     }
@@ -79,5 +118,8 @@ export const actions = {
 export const getters = {
   getState (state) {
     return state.data
+  },
+  getStateSpiner (state) {
+    return state.stateSpiner
   }
 }

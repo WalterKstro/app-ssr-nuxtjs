@@ -39,14 +39,14 @@ export default {
       '@nuxtjs/firebase',
       {
         config: {
-          apiKey: "AIzaSyD8AfL5wm4jt5HUA5DCiLAAu4__NKeozIw",
-          authDomain: "vets-pets.firebaseapp.com",
-          databaseURL: "https://vets-pets.firebaseio.com",
-          projectId: "vets-pets",
-          storageBucket: "vets-pets.appspot.com",
-          messagingSenderId: "1021489739055",
-          appId: "1:1021489739055:web:b34869feb4e9637ddd5dda",
-          measurementId: "G-N6E3HWEXM6"
+          apiKey: 'AIzaSyD8AfL5wm4jt5HUA5DCiLAAu4__NKeozIw',
+          authDomain: 'vets-pets.firebaseapp.com',
+          databaseURL: 'https://vets-pets.firebaseio.com',
+          projectId: 'vets-pets',
+          storageBucket: 'vets-pets.appspot.com',
+          messagingSenderId: '1021489739055',
+          appId: '1:1021489739055:web:b34869feb4e9637ddd5dda',
+          measurementId: 'G-N6E3HWEXM6'
         },
         services: {
           auth: {
