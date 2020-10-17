@@ -2,7 +2,7 @@
   <section>
     <b-row>
       <b-col cols="12">
-        <b-form @submit="saveFirestore(service)">
+        <b-form @submit.prevent="uploadImage(objUpdate)">
           <b-form-group
             id="group_service"
             label="Nombre:"
@@ -42,10 +42,10 @@
           <b-form-group id="group_url" label-for="url_service">
             <b-form-file
               placeholder="Seleccione una imagen"
-              @change="uploadImage($event)"
+              @change="setService($event)"
             />
           </b-form-group>
-          <b-button type="submit" variant="primary" :disabled="service.imagen ===null">
+          <b-button type="submit" variant="primary" :disabled="objUpdate.file === null">
             Guardar
           </b-button>
         </b-form>
@@ -66,16 +66,20 @@ export default {
         descripcion: '',
         imagen: null
       },
-      urlTemp: ''
+      objUpdate: {
+        id: '',
+        file: null
+      }
     }
   },
   methods: {
-    ...mapActions('services', ['setImageStorage', 'setServiceFirestore']),
-    uploadImage (event) {
-      this.service.imagen = event.target.files[0]
-      this.setImageStorage(this.service.imagen).then((data) => {
-        this.service.imagen = data
-      })
+    ...mapActions('services', ['uploadImage', 'createService', 'getServicesFirestore']),
+    setService (event) {
+      this.objUpdate.file = event.target.files[0]
+      this.createService(this.service)
+        .then((id) => {
+          this.objUpdate.id = id
+        })
     }
   }
 }

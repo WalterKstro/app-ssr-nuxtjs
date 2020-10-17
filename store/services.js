@@ -46,32 +46,29 @@ export const mutations = {
 }
 
 export const actions = {
-  /**
-   * UPLOAD IMAGE TO STORAGE
-   * @param commit
-   * @param file
-   * @returns {Promise<void>}
-   */
-  async setImageStorage ({ commit }, file) {
-    let urlTemp = ''
+  async createService ({ commit }, payload) {
+    let id = ''
     try {
-      const refImage = this.$fireStorage.ref().child('services').child(file.name)
-      await refImage.put(file)
-      urlTemp = await refImage.getDownloadURL()
-      return urlTemp
+      await this.$fireStore.collection('services').add(payload)
+        .then(function (docRef) {
+          id = docRef.id
+        })
+      return id
     } catch (e) {
       commit('SET_ERROR', e)
     }
   },
-  /**
-   * SAVE SERVICE TO FIRESTORE
-   * @param commit
-   * @param service
-   * @returns {Promise<void>}
-   */
-  async setServiceFirestore ({ commit }, service) {
+  async uploadImage ({ commit }, payload) {
+    let urlTemp = ''
+    const ext = payload.file.name.slice(payload.file.name.lastIndexOf('.'))
+    const img = `${payload.id}${ext}`
     try {
-      await this.$fireStore.collection('services').add(service)
+      const refImage = await this.$fireStorage.ref().child('services').child(img)
+      await refImage.put(payload.file)
+      urlTemp = await refImage.getDownloadURL()
+      await this.$fireStore.collection('services').doc(payload.id).update({
+        imagen: urlTemp
+      })
     } catch (e) {
       commit('SET_ERROR', e)
     }
