@@ -1,6 +1,6 @@
 <template>
   <section>
-    <b-row class="h-100" align-v="center">
+    <b-row>
       <b-col cols="12">
         <b-form @submit="saveFirestore(service)">
           <b-form-group
@@ -45,7 +45,7 @@
               @change="uploadImage($event)"
             />
           </b-form-group>
-          <b-button type="submit" variant="primary" :disabled="service.url ===null">
+          <b-button type="submit" variant="primary" :disabled="service.imagen ===null">
             Guardar
           </b-button>
         </b-form>
@@ -70,18 +70,10 @@ export default {
     }
   },
   methods: {
-    ...mapActions({
-      loadImage: 'services/setImageStorage',
-      saveFirestore: 'services/setServiceFirestore'
-    }),
+    ...mapActions('services', ['setImageStorage', 'setServiceFirestore']),
     uploadImage (event) {
       this.service.imagen = event.target.files[0]
-      const reader = new FileReader()
-      reader.readAsDataURL(this.service.imagen)
-      reader.onload = (e) => {
-        this.urlTemp = e.target.result
-      }
-      this.loadImage(this.service.imagen).then((data) => {
+      this.setImageStorage(this.service.imagen).then((data) => {
         this.service.imagen = data
       })
     }

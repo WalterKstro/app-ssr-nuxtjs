@@ -112,6 +112,19 @@ export const actions = {
     } catch (e) {
       commit('SET_ERROR', e)
     }
+  },
+  /**
+   * UPDATE ONE SERVICE
+   * @param commit
+   * @param service
+   * @returns {Promise<void>}
+   */
+  async udpateService ({ commit }, service) {
+    try {
+      await this.$fireStore.collection('services').doc(service.id).update(service)
+    } catch (e) {
+      commit('SET_ERROR', e)
+    }
   }
 }
 

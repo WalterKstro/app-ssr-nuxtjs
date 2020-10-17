@@ -9,6 +9,7 @@
     </b-row>
     <b-row>
       <b-col cols="12" class="d-flex">
+        <!-- BUTTON ADD NEW SERVICE -->
         <b-btn v-b-modal.modal-prevent-closing class="btn btn-sm mb-4 ml-auto" variant="primary">
           <b-icon icon="plus-circle" />
           Agregar
@@ -22,7 +23,7 @@
           centered
           hide-footer
         >
-          <Nuevo />
+          <NuevoServicio />
         </b-modal>
       </b-col>
     </b-row>
@@ -58,9 +59,13 @@
           </template>
           <!--ICONS OPTIONS-->
           <template v-slot:cell(options)="data">
-            <b-btn class="btn-sm" variant="primary">
+            <b-btn v-b-modal="data.item.imagen" class="btn-sm" variant="primary" @click="getServiceSelected(data.item.id)">
               <b-icon icon="pencil-square" />
             </b-btn>
+            <!--MODAL UPDATE SERVICE-->
+            <b-modal :id="data.item.imagen" centered hide-footer size="xl">
+              <EditarServicio :data="objService" />
+            </b-modal>
             <b-btn class="btn-sm" variant="danger" @click="deleteServices(data.item.id)">
               <b-icon icon="trash" />
             </b-btn>
@@ -73,17 +78,20 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import Nuevo from '@/components/Nuevo'
+import NuevoServicio from '@/components/NuevoServicio'
+import EditarServicio from '@/components/EditarServicio'
 export default {
   name: 'AdminServices',
   layout: 'admin',
   components: {
-    Nuevo
+    NuevoServicio,
+    EditarServicio
   },
   data () {
     return {
       fields: ['id', 'nombre', 'precio', { key: 'imagen', label: 'Imagen' }, { key: 'descripcion', label: 'Descripción' }, { key: 'options', label: 'Operaciones' }],
-      loading: true
+      loading: true,
+      objService: null
     }
   },
   computed: {
@@ -102,6 +110,12 @@ export default {
       if (response) {
         this.deleteOneService(id)
       }
+    },
+    getServiceSelected (id) {
+      const index = this.getData.findIndex((service) => {
+        return service.id === id
+      })
+      this.objService = this.getData[index]
     }
   }
 }
