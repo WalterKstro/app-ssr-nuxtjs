@@ -53,7 +53,7 @@
                 :src="service.imagen"
                 thumbnail
                 center
-                class="w-75 mb-5"
+                class="w-100 mb-5"
                 alt="Foto del servicio"
               />
               <b-form-group id="group_url" label-for="url_service">
@@ -64,7 +64,7 @@
               </b-form-group>
             </b-col>
           </b-row>
-          <b-button type="submit" variant="primary" :disabled="objUpdate.file === null">
+          <b-button type="submit" variant="primary">
             Actualizar
           </b-button>
         </b-form>

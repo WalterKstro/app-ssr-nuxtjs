@@ -48,10 +48,12 @@
           </template>
           <!--ICONS OPTIONS-->
           <template v-slot:cell(options)="data">
+            <!--BUTTON UPDATE-->
             <b-btn class="btn-sm" variant="primary" :to="`/admin/servicios/${data.item.id}`">
               <b-icon icon="pencil-square" />
             </b-btn>
-            <b-btn class="btn-sm" variant="danger" @click="deleteServices(data.item.id)">
+            <!--BUTTTON DELETE-->
+            <b-btn class="btn-sm" variant="danger" @click="confirmDelete(data.item.id)">
               <b-icon icon="trash" />
             </b-btn>
           </template>
@@ -70,7 +72,8 @@ export default {
     return {
       fields: ['id', 'nombre', 'precio', { key: 'imagen', label: 'Imagen' }, { key: 'descripcion', label: 'Descripción' }, { key: 'options', label: 'Operaciones' }],
       loading: true,
-      objService: null
+      objService: null,
+      response: ''
     }
   },
   computed: {
@@ -84,11 +87,22 @@ export default {
   },
   methods: {
     ...mapActions('services', ['getServicesFirestore', 'deleteOneService']),
-    deleteServices (id) {
-      const response = confirm('Desea eliminar el servicio con id: ' + id)
-      if (response) {
-        this.deleteOneService(id)
-      }
+    confirmDelete (id) {
+      this.response = ''
+      this.$bvModal.msgBoxConfirm('Confirme que si deseas eliminarlo', {
+        size: 'sm',
+        buttonSize: 'sm',
+        okVariant: 'danger',
+        okTitle: 'Si',
+        cancelTitle: 'No',
+        hideHeaderClose: true,
+        centered: true
+      })
+        .then((value) => {
+          if (value) {
+            this.deleteOneService(id)
+          }
+        })
     }
   }
 }
