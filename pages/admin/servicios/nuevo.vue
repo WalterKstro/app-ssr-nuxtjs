@@ -2,6 +2,13 @@
   <section>
     <b-row>
       <b-col cols="12">
+        <h1 class="text-center m-4">
+          Nuevo servicio
+        </h1>
+      </b-col>
+    </b-row>
+    <b-row>
+      <b-col cols="12" offset-md="3" md="6">
         <b-form @submit.prevent="uploadImage(objUpdate)">
           <b-form-group
             id="group_service"
@@ -58,6 +65,7 @@
 import { mapActions } from 'vuex'
 export default {
   name: 'NuevoService',
+  layout: 'admin',
   data () {
     return {
       service: {
@@ -68,12 +76,13 @@ export default {
       },
       objUpdate: {
         id: '',
-        file: null
+        file: null,
+        opt: true
       }
     }
   },
   methods: {
-    ...mapActions('services', ['uploadImage', 'createService', 'getServicesFirestore']),
+    ...mapActions('services', ['uploadImage', 'createService']),
     setService (event) {
       this.objUpdate.file = event.target.files[0]
       this.createService(this.service)
@@ -84,7 +93,6 @@ export default {
   }
 }
 </script>
-
 <style scoped>
 
 </style>

@@ -1,8 +1,15 @@
 <template>
   <section>
-    <b-row class="h-100" align-v="center">
+    <b-row>
       <b-col cols="12">
-        <b-form @submit="udpateService(service)">
+        <h1 class="text-center m-4">
+          Editar servicio
+        </h1>
+      </b-col>
+    </b-row>
+    <b-row>
+      <b-col cols="12" offset-md="2" md="8">
+        <b-form @submit.prevent="udpateService(service)">
           <b-row>
             <b-col cols="12" md="6">
               <b-form-group
@@ -46,18 +53,18 @@
                 :src="service.imagen"
                 thumbnail
                 center
-                class="w-50 mb-5"
+                class="w-75 mb-5"
                 alt="Foto del servicio"
               />
               <b-form-group id="group_url" label-for="url_service">
                 <b-form-file
                   placeholder="Seleccione una imagen"
-                  @change="uploadImage($event)"
+                  @change="changeImage($event)"
                 />
               </b-form-group>
             </b-col>
           </b-row>
-          <b-button type="submit" variant="primary">
+          <b-button type="submit" variant="primary" :disabled="objUpdate.file === null">
             Actualizar
           </b-button>
         </b-form>
@@ -67,39 +74,45 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapGetters } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 export default {
-  name: 'EditarServicio',
-  props: {
-    data: {
-      type: Object,
-      default () {
-        return {}
+  name: 'Actualizar',
+  layout: 'admin',
+  data () {
+    return {
+      id: this.$route.params.id,
+      service: '',
+      objUpdate: {
+        id: this.$route.params.id,
+        file: null,
+        opt: false
       }
     }
   },
-  data () {
-    return {
-      service: { ...this.data },
-      file: null
-    }
-  },
   computed: {
-    ...mapState('services', ['oneService']),
-    ...mapGetters('services', ['getOneService'])
+    ...mapState('services', ['data'])
+  },
+  mounted () {
+    this.getServideById()
   },
   methods: {
-    ...mapActions('services', ['setImageStorage', 'setServiceFirestore', 'udpateService']),
-    uploadImage (event) {
-      this.file = event.target.files[0]
-      this.setImageStorage(this.file).then((data) => {
+    ...mapActions('services', ['uploadImage', 'udpateService']),
+    changeImage (event) {
+      this.objUpdate.file = event.target.files[0]
+      this.uploadImage(this.objUpdate).then((data) => {
         this.service.imagen = data
       })
+    },
+    /**
+     * SEARCH ONE SEVICE FORM STORAGE WITH ID
+     */
+    getServideById () {
+      const index = this.data.findIndex(service => service.id === this.id)
+      this.service = { ...this.data[index] }
     }
   }
 }
 </script>
-
 <style scoped>
 
 </style>

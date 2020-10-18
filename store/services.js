@@ -69,8 +69,13 @@ export const actions = {
       await this.$fireStore.collection('services').doc(payload.id).update({
         imagen: urlTemp
       })
+      return urlTemp
     } catch (e) {
       commit('SET_ERROR', e)
+    } finally {
+      if (payload.opt) {
+        await this.$router.push('/admin/servicios')
+      }
     }
   },
   /**
@@ -121,6 +126,8 @@ export const actions = {
       await this.$fireStore.collection('services').doc(service.id).update(service)
     } catch (e) {
       commit('SET_ERROR', e)
+    } finally {
+      await this.$router.push('/admin/servicios')
     }
   }
 }
