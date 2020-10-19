@@ -53,7 +53,7 @@
                 :src="service.imagen"
                 thumbnail
                 center
-                class="w-100 mb-5"
+                class="w-75 mb-5"
                 alt="Foto del servicio"
               />
               <b-form-group id="group_url" label-for="url_service">

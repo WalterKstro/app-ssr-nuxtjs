@@ -138,5 +138,12 @@ export const getters = {
   },
   getStateSpiner (state) {
     return state.stateSpiner
+  },
+  getIndexServices (state) {
+    const data = []
+    for (let i = 0; i < 3; i++) {
+      data.push(state.data[i])
+    }
+    return data
   }
 }

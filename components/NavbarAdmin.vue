@@ -14,7 +14,7 @@
           </b-collapse>
           <b-navbar-toggle target="nav-collapse" />
           <!--BRAND ICON-->
-          <b-navbar-brand to="/" class="brand">
+          <b-navbar-brand to="/" class="brand" target="_blank">
             <img src="@/assets/media/LogoSmall.svg" alt="Logo de la empresa">
           </b-navbar-brand>
         </b-navbar>

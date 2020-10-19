@@ -4,7 +4,7 @@
       <b-col class="p-0">
         <b-navbar toggleable="md" type="light" class="main--nav">
           <!--BRAND ICON-->
-          <b-navbar-brand href="#" class="brand">
+          <b-navbar-brand to="/" class="brand">
             <img src="@/assets/media/LogoSmall.svg" alt="Logo de la empresa">
           </b-navbar-brand>
 
@@ -12,7 +12,7 @@
           <!--MAIN NAV-->
           <b-collapse id="nav-collapse" is-nav>
             <b-navbar-nav class="text-center nav--list">
-              <b-nav-item v-for="link in links" :key="link.id" class="nav--item">
+              <b-nav-item v-for="link in links" :key="link.id" :to="link.path" class="nav--item">
                 {{ link.name }}
               </b-nav-item>
             </b-navbar-nav>
