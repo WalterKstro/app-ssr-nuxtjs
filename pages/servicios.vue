@@ -1,21 +1,25 @@
 <template>
   <section>
-    <b-row>
-      <b-col cols="12">
-        <h1 class="text-center">
-          Nuestros servicios
-        </h1>
-      </b-col>
-    </b-row>
+    <b-container fluid>
+      <b-row>
+        <b-col cols="12" class="p-0">
+          <BannerServices />
+        </b-col>
+      </b-row>
+    </b-container>
   </section>
 </template>
 
 <script>
+import BannerServices from '@/components/BannerServices'
 export default {
-  name: 'Servicios'
+  name: 'Servicios',
+  components: {
+    BannerServices
+  }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 </style>

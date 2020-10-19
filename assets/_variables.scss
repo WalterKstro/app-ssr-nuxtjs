@@ -2,3 +2,18 @@ $primary-brand: #1E8FBB;
 $primary-brand-light: #A7EBF2;
 $white: #F2F2F2;
 $dark: #22314A;
+@mixin sublineTitle {
+  display: inline-block;
+  position: relative;
+  &::after{
+    content: '';
+    width: 100%;
+    height: 5px;
+    display: block;
+    background-color: $dark;
+  }
+}
+
+.underline{
+  @include sublineTitle
+}
