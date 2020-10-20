@@ -1,6 +1,9 @@
 <template>
-  <b-row class="h-100" align-v="center">
-    <b-col cols="12" md="4" offset-md="4">
+  <div class="form__login">
+    <div class="main__form">
+      <div class="brand">
+        <b-img src="@/assets/media/LogoSmall.svg" fluid block center alt="Logo Vets and Pets" />
+      </div>
       <b-form @submit.prevent="login(account)">
         <b-form-group
           id="email"
@@ -31,8 +34,8 @@
           Iniciar sessión
         </b-button>
       </b-form>
-    </b-col>
-  </b-row>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -55,4 +58,20 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.form__login{
+  background-color: $primary-brand;
+  height:100%;
+  display: flex;
+}
+.main__form{
+  margin: auto;
+  width: 30%;
+}
+.brand{
+  width: 70%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 20px;
+}
+</style>

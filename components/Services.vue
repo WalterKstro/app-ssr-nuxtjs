@@ -22,7 +22,7 @@
               {{ service.descripcion }}
             </b-card-text>
             <template v-slot:footer>
-              <strong class="text-right d-block">Q{{ service.precio }}</strong>
+              <strong class="text-right d-block">{{ service.precio | price }}</strong>
             </template>
           </b-card>
         </b-col>
@@ -42,10 +42,17 @@
 import { mapGetters } from 'vuex'
 export default {
   name: 'Services',
+  filters: {
+    price (value) {
+      if (isNaN(value)) {
+        return 'Precio variable'
+      }
+      return `Q ${value}`
+    }
+  },
   computed: {
     ...mapGetters('services', ['getIndexServices'])
   }
-
 }
 </script>
 

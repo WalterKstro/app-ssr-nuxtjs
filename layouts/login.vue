@@ -1,7 +1,7 @@
 <template>
-  <b-container class="wrapper__login">
+  <div class="wrapper__login">
     <Nuxt />
-  </b-container>
+  </div>
 </template>
 
 <script>
