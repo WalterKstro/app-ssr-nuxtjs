@@ -2,7 +2,7 @@
   <b-container fluid>
     <b-row>
       <b-col class="p-0">
-        <b-navbar toggleable="md" type="light" class="main--nav">
+        <b-navbar toggleable="md" :sticky="true" type="light" class="main--nav">
           <!--BRAND ICON-->
           <b-navbar-brand to="/" class="brand">
             <img src="@/assets/media/LogoSmall.svg" alt="Logo de la empresa">

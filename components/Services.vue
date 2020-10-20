@@ -11,7 +11,7 @@
       <b-row>
         <b-col cols="12" class="grid__card">
           <b-card
-            v-for="service in getIndexServices"
+            v-for="service in getFilterDocuments"
             :key="service.id"
             :title="service.nombre"
             :img-src="service.imagen"
@@ -51,7 +51,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('services', ['getIndexServices'])
+    ...mapGetters(['getFilterDocuments'])
   }
 }
 </script>

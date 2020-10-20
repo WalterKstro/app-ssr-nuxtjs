@@ -82,10 +82,10 @@ export default {
     }
   },
   methods: {
-    ...mapActions('services', ['uploadImage', 'createService']),
+    ...mapActions(['uploadImage', 'createNew']),
     setService (event) {
       this.objUpdate.file = event.target.files[0]
-      this.createService(this.service)
+      this.createNew(this.service)
         .then((id) => {
           this.objUpdate.id = id
         })

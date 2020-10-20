@@ -1,52 +1,11 @@
-export const state = () => ({
-  errorLoad: '',
-  data: [],
-  stateSpiner: null
-})
-
-export const mutations = {
+export default {
   /**
-   * SET ERROR TO STATE
-   * @param state
-   * @param error
-   */
-  SET_ERROR (state, error) {
-    state.errorLoad = error
-  },
-  /**
-   * SET ALL COLLECTION TO STATE
-   * @param state
-   * @param services
-   */
-  SET_SERVICES (state, payload) {
-    state.data = payload
-  },
-  /**
-   * CHANGE STATE SPINER LOADING WHILE GET DATA
-   * COLLECTION FROM FIREBASE
-   * @param state
+   * CREATE NEW DOCUMENT
+   * @param commit
    * @param payload
-   * @constructor
+   * @returns {Promise<string>}
    */
-  SET_STATE_SPINER (state, payload) {
-    state.stateSpiner = payload
-  },
-  /**
-   * DELETE ON SERVICE OF STATE
-   * @param state
-   * @param id
-   * @constructor
-   */
-  DELETE_SERVICE (state, id) {
-    const index = state.data.findIndex((service) => {
-      return service.id === id
-    })
-    state.data.splice(index, 1)
-  }
-}
-
-export const actions = {
-  async createService ({ commit }, payload) {
+  async createNew ({ commit }, payload) {
     let id = ''
     try {
       await this.$fireStore.collection('services').add(payload)
@@ -58,6 +17,12 @@ export const actions = {
       commit('SET_ERROR', e)
     }
   },
+  /**
+   * UPLOAD ONE IMAGE TO STORAGE
+   * @param commit
+   * @param payload
+   * @returns {Promise<*|string>}
+   */
   async uploadImage ({ commit }, payload) {
     let urlTemp = ''
     const ext = payload.file.name.slice(payload.file.name.lastIndexOf('.'))
@@ -79,12 +44,12 @@ export const actions = {
     }
   },
   /**
-   * GET ALL DATA SERVICES FROM FIRESTORE
+   * GET ALL DOCUMENTS
    * @param commit
    * @returns {Promise<void>}
    */
-  async getServicesFirestore ({ commit }) {
-    const servicesTemp = []
+  async selectDocuments ({ commit }) {
+    const temp = []
     commit('SET_STATE_SPINER', true)
     try {
       await this.$fireStore.collection('services').get()
@@ -92,58 +57,42 @@ export const actions = {
           querySnapshot.forEach((doc) => {
             const tempDoc = doc.data()
             tempDoc.id = doc.id
-            servicesTemp.push(tempDoc)
+            temp.push(tempDoc)
           })
           commit('SET_STATE_SPINER', false)
         })
-      commit('SET_SERVICES', servicesTemp)
+      commit('SET_DOCUMENT', temp)
     } catch (e) {
       commit('SET_ERROR', e)
     }
   },
   /**
-   * DELETE ONE SERVICE FROM FIRESTORE
+   * DELETE ONE DOCUMENT
    * @param commit
    * @param id
    * @returns {Promise<void>}
    */
-  async deleteOneService ({ commit }, id) {
+  async deleteOneDocument ({ commit }, id) {
     try {
       await this.$fireStore.collection('services').doc(id).delete()
-      commit('DELETE_SERVICE', id)
+      commit('DELETE_DOCUMENT', id)
     } catch (e) {
       commit('SET_ERROR', e)
     }
   },
   /**
-   * UPDATE ONE SERVICE
+   * UPDATE ONE DOCUMENT
    * @param commit
    * @param service
    * @returns {Promise<void>}
    */
-  async udpateService ({ commit }, service) {
+  async udpateDocument ({ commit }, payload) {
     try {
-      await this.$fireStore.collection('services').doc(service.id).update(service)
+      await this.$fireStore.collection('services').doc(payload.id).update(payload)
     } catch (e) {
       commit('SET_ERROR', e)
     } finally {
       await this.$router.push('/admin/servicios')
     }
-  }
-}
-
-export const getters = {
-  getState (state) {
-    return state.data
-  },
-  getStateSpiner (state) {
-    return state.stateSpiner
-  },
-  getIndexServices (state) {
-    const data = []
-    for (let i = 0; i < 3; i++) {
-      data.push(state.data[i])
-    }
-    return data
   }
 }

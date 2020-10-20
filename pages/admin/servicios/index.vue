@@ -18,7 +18,7 @@
     </b-row>
     <b-row>
       <b-col cols="12">
-        <div v-if="conditionalSpiner" class="text-center">
+        <div v-if="stateSpiner" class="text-center">
           <b-spinner variant="primary" label="Spinning" />
         </div>
         <!--TABLE-->
@@ -28,7 +28,7 @@
           small
           responsive
           bordered
-          :items="getData"
+          :items="services"
           :fields="fields"
         >
           <!--ICON IMAGE-->
@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 export default {
   name: 'AdminServices',
   layout: 'admin',
@@ -77,16 +77,13 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({
-      getData: 'services/getState',
-      conditionalSpiner: 'services/getStateSpiner'
-    })
+    ...mapState(['services', 'stateSpiner'])
   },
-  created () {
-    this.getServicesFirestore()
+  mounted () {
+    this.selectDocuments()
   },
   methods: {
-    ...mapActions('services', ['getServicesFirestore', 'deleteOneService']),
+    ...mapActions(['selectDocuments', 'deleteOneDocument']),
     confirmDelete (id) {
       this.response = ''
       this.$bvModal.msgBoxConfirm('Confirme que si deseas eliminarlo', {
@@ -100,7 +97,7 @@ export default {
       })
         .then((value) => {
           if (value) {
-            this.deleteOneService(id)
+            this.deleteOneDocument(id)
           }
         })
     }

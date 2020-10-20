@@ -11,7 +11,7 @@
       <b-row>
         <b-col cols="12" class="grid__card my-md-5">
           <b-card
-            v-for="service in data"
+            v-for="service in services"
             :key="service.id"
             :title="service.nombre"
             :img-src="service.imagen"
@@ -48,13 +48,13 @@ export default {
     }
   },
   computed: {
-    ...mapState('services', ['data'])
+    ...mapState(['services'])
   },
   mounted () {
-    this.getServicesFirestore()
+    this.selectDocuments()
   },
   methods: {
-    ...mapActions('services', ['getServicesFirestore'])
+    ...mapActions(['selectDocuments'])
   }
 }
 </script>

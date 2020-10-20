@@ -43,4 +43,5 @@ export default {
     width: 90%;
   }
 }
+.text-light{display: inline-block;}
 </style>

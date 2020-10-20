@@ -15,7 +15,7 @@ export default {
     Services
   },
   async fetch ({ store }) {
-    await store.dispatch('services/getServicesFirestore')
+    await store.dispatch('selectDocuments')
   }
 }
 </script>
