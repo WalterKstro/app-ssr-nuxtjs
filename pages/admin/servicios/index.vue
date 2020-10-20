@@ -80,7 +80,7 @@ export default {
     ...mapState(['services', 'stateSpiner'])
   },
   mounted () {
-    this.selectDocuments()
+    this.selectDocuments({ payload: 'servicios' })
   },
   methods: {
     ...mapActions(['selectDocuments', 'deleteOneDocument']),
@@ -97,7 +97,7 @@ export default {
       })
         .then((value) => {
           if (value) {
-            this.deleteOneDocument(id)
+            this.deleteOneDocument({ id, payload: 'servicios' })
           }
         })
     }

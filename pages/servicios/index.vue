@@ -51,7 +51,7 @@ export default {
     ...mapState(['services'])
   },
   mounted () {
-    this.selectDocuments()
+    this.selectDocuments({ payload: 'servicios' })
   },
   methods: {
     ...mapActions(['selectDocuments'])

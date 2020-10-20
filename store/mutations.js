@@ -12,8 +12,17 @@ export default {
    * @param state
    * @param services
    */
-  SET_DOCUMENT (state, payload) {
+  SET_DOCUMENT_SERVICE (state, payload) {
     state.services = payload
+  },
+  /**
+   * SET ALL COLLECTION TO STATE
+   * @param state
+   * @param payload
+   * @constructor
+   */
+  SET_DOCUMENT_PRODUCT (state, payload) {
+    state.products = payload
   },
   /**
    * CHANGE THE STATE OF SPINER LOADING
@@ -30,10 +39,24 @@ export default {
    * @param id
    * @constructor
    */
-  DELETE_DOCUMENT (state, id) {
-    const index = state.services.findIndex((service) => {
-      return service.id === id
-    })
-    state.services.splice(index, 1)
+  DELETE_DOCUMENT (state, { id, payload }) {
+    /**
+     * IT'S SERVICES DELETE
+     */
+    if (payload === 'servicios') {
+      const index = state.services.findIndex((doc) => {
+        return doc.id === id
+      })
+      state.services.splice(index, 1)
+    }
+    /**
+     * IT'S PRODUCTS DELETE
+     */
+    if (payload === 'productos') {
+      const index = state.products.findIndex((doc) => {
+        return doc.id === id
+      })
+      state.products.splice(index, 1)
+    }
   }
 }

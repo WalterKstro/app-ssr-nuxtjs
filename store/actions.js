@@ -5,10 +5,15 @@ export default {
    * @param payload
    * @returns {Promise<string>}
    */
-  async createNew ({ commit }, payload) {
+  async createNew ({ commit }, { nombre, precio, descripcion, imagen, collection }) {
     let id = ''
     try {
-      await this.$fireStore.collection('services').add(payload)
+      await this.$fireStore.collection(collection).add({
+        nombre,
+        precio,
+        descripcion,
+        imagen
+      })
         .then(function (docRef) {
           id = docRef.id
         })
@@ -23,23 +28,24 @@ export default {
    * @param payload
    * @returns {Promise<*|string>}
    */
-  async uploadImage ({ commit }, payload) {
+  async uploadImage ({ commit }, { id, file, redirect, collection }) {
     let urlTemp = ''
-    const ext = payload.file.name.slice(payload.file.name.lastIndexOf('.'))
-    const img = `${payload.id}${ext}`
+    const ext = file.name.slice(file.name.lastIndexOf('.'))
+    const img = `${id}${ext}`
     try {
-      const refImage = await this.$fireStorage.ref().child('services').child(img)
-      await refImage.put(payload.file)
+      const refImage = await this.$fireStorage.ref().child(collection).child(img)
+      await refImage.put(file)
       urlTemp = await refImage.getDownloadURL()
-      await this.$fireStore.collection('services').doc(payload.id).update({
-        imagen: urlTemp
+      await this.$fireStore.collection(collection).doc(id).update({
+        imagen: urlTemp,
+        id
       })
       return urlTemp
     } catch (e) {
       commit('SET_ERROR', e)
     } finally {
-      if (payload.opt) {
-        await this.$router.push('/admin/servicios')
+      if (redirect) {
+        await this.$router.push(`/admin/${collection}`)
       }
     }
   },
@@ -48,11 +54,11 @@ export default {
    * @param commit
    * @returns {Promise<void>}
    */
-  async selectDocuments ({ commit }) {
+  async selectDocuments ({ commit }, payload) {
     const temp = []
     commit('SET_STATE_SPINER', true)
     try {
-      await this.$fireStore.collection('services').get()
+      await this.$fireStore.collection(payload.payload).get()
         .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
             const tempDoc = doc.data()
@@ -61,7 +67,18 @@ export default {
           })
           commit('SET_STATE_SPINER', false)
         })
-      commit('SET_DOCUMENT', temp)
+      /**
+       * IF IT´S SERVICES
+       */
+      if (payload.payload === 'servicios') {
+        commit('SET_DOCUMENT_SERVICE', temp)
+      }
+      /**
+       * IF IT'S PRODUCTS
+       */
+      if (payload.payload === 'productos') {
+        commit('SET_DOCUMENT_PRODUCT', temp)
+      }
     } catch (e) {
       commit('SET_ERROR', e)
     }
@@ -72,10 +89,10 @@ export default {
    * @param id
    * @returns {Promise<void>}
    */
-  async deleteOneDocument ({ commit }, id) {
+  async deleteOneDocument ({ commit }, payload) {
     try {
-      await this.$fireStore.collection('services').doc(id).delete()
-      commit('DELETE_DOCUMENT', id)
+      await this.$fireStore.collection(payload.payload).doc(payload.id).delete()
+      commit('DELETE_DOCUMENT', payload)
     } catch (e) {
       commit('SET_ERROR', e)
     }
@@ -88,11 +105,18 @@ export default {
    */
   async udpateDocument ({ commit }, payload) {
     try {
-      await this.$fireStore.collection('services').doc(payload.id).update(payload)
+      const { id, nombre, precio, descripcion, imagen } = { ...payload }
+      await this.$fireStore.collection(payload.collection).doc(payload.id).update({
+        id,
+        nombre,
+        precio,
+        descripcion,
+        imagen
+      })
     } catch (e) {
       commit('SET_ERROR', e)
     } finally {
-      await this.$router.push('/admin/servicios')
+      await this.$router.push(`/admin/${payload.collection}`)
     }
   }
 }
