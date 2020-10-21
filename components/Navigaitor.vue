@@ -11,7 +11,7 @@
           <b-navbar-toggle target="nav-collapse" />
           <!--MAIN NAV-->
           <b-collapse id="nav-collapse" is-nav>
-            <b-navbar-nav class="text-center nav--list">
+            <b-navbar-nav class="text-center nav--list m-auto">
               <b-nav-item v-for="link in links" :key="link.id" :to="link.path" class="nav--item">
                 {{ link.name }}
               </b-nav-item>

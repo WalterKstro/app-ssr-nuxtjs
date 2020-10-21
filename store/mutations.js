@@ -58,5 +58,20 @@ export default {
       })
       state.products.splice(index, 1)
     }
+    if (payload === 'contact') {
+      const index = state.contact.findIndex((doc) => {
+        return doc.id === id
+      })
+      state.contact.splice(index, 1)
+    }
+  },
+  /**
+   * SET MESSAGES
+   * @param state
+   * @param payload
+   * @constructor
+   */
+  SET_MESSAGE (state, payload) {
+    state.contact = payload
   }
 }

@@ -8,5 +8,9 @@ export default () => ({
    * STORE PRODUCTOS
    */
   products: [],
+  /**
+   * STORE CONTACT
+   */
+  contact: [],
   stateSpiner: null
 })

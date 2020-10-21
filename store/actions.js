@@ -118,5 +118,46 @@ export default {
     } finally {
       await this.$router.push(`/admin/${payload.collection}`)
     }
+  },
+  /**
+   * CREATE ONE CONTACT
+   * @param commit
+   * @param payload
+   * @returns {Promise<void>}
+   */
+  async createContact ({ commit }, payload) {
+    let id = ''
+    try {
+      await this.$fireStore.collection('contact').add(payload)
+        .then(function (docRef) {
+          id = docRef.id
+        })
+      return id
+    } catch (e) {
+      commit('SET_ERROR', e)
+    }
+  },
+  /**
+   * SELECT ALL MESSAGES
+   * @param commit
+   * @returns {Promise<void>}
+   */
+  async selectContac ({ commit }) {
+    const temp = []
+    commit('SET_STATE_SPINER', true)
+    try {
+      await this.$fireStore.collection('contact').get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            const tempDoc = doc.data()
+            tempDoc.id = doc.id
+            temp.push(tempDoc)
+          })
+          commit('SET_STATE_SPINER', false)
+        })
+      commit('SET_MESSAGE', temp)
+    } catch (e) {
+      commit('SET_ERROR', e)
+    }
   }
 }

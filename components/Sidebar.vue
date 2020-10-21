@@ -20,7 +20,7 @@
     <template v-slot:footer>
       <div class="d-flex align-items-center px-3 py-2">
         <b-button size="sm" @click="closeSession">
-          <b-icon icon="box-arrow-right" />
+          <b-icon icon="power" />
           Cerrar sessión
         </b-button>
       </div>
@@ -38,6 +38,8 @@ export default {
       links: [
         { name: 'Servicios', path: '/admin/servicios' },
         { name: 'Productos', path: '/admin/productos' },
+        { name: 'Mensajes', path: '/admin/mensajes' },
+        { name: 'Blog', path: '/admin/blog' },
         { name: 'Crear usuario', path: '/admin/cuenta' }
       ]
     }

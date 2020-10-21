@@ -8,6 +8,34 @@
       <!--MAIN-->
       <Nuxt />
     </main>
+    <!--FOOTER-->
+    <footer class="footer__bottom mt-5">
+      <b-container>
+        <b-row align-v="center">
+          <b-col cols="12" md="6">
+            <div class="footer__brand py-2">
+              <img src="@/assets/media/LogoSmall.svg" alt="Logo de la empresa">
+            </div>
+          </b-col>
+          <b-col cols="12" md="6">
+            <div class="d-flex justify-content-end nav__bottom py-2">
+              <b-nav>
+                <b-nav-item v-for="link in links" :key="link.id" :to="link.path" class="nav__item">
+                  {{ link.name }}
+                </b-nav-item>
+              </b-nav>
+            </div>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col cols="12">
+            <p class="text-center small">
+              &copy; Derechos Reservados,{{ date }} Vets & Pets
+            </p>
+          </b-col>
+        </b-row>
+      </b-container>
+    </footer>
   </div>
 </template>
 <script>
@@ -16,9 +44,29 @@ export default {
   name: 'DefaultTemplate',
   components: {
     Nav
+  },
+  data () {
+    return {
+      date: new Date().getFullYear(),
+      links: [
+        { name: 'Acerca', path: '/acerca' },
+        { name: 'Servicios', path: '/servicios' },
+        { name: 'Productos', path: '/productos' },
+        { name: 'Blog', path: '/blog' },
+        { name: 'Contacto', path: '/contacto' }
+      ]
+    }
   }
 }
 </script>
-<style>
-
+<style lang="scss" scoped>
+.footer__bottom{background-color: $dark;}
+.footer__brand{
+  width: 20%;
+}
+.nav__item > *{
+  color: $white !important;
+  font-size: 0.8rem;
+}
+.text-center{color: $white;}
 </style>
