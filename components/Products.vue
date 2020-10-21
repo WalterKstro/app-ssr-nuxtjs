@@ -4,7 +4,7 @@
       <b-row>
         <b-col cols="12">
           <h1 class="text-center m-5 text-light">
-            Nuestros productos
+            Nuestros productos y accesorios
           </h1>
         </b-col>
       </b-row>

@@ -1,12 +1,22 @@
 <template>
-  <div>
-    <h1>Productos</h1>
-  </div>
+  <section>
+    <b-container fluid>
+      <b-row>
+        <b-col cols="12" class="p-0">
+          <BannerProducts />
+        </b-col>
+      </b-row>
+    </b-container>
+  </section>
 </template>
 
 <script>
+import BannerProducts from '@/components/BannerProducts'
 export default {
-  name: 'Productos'
+  name: 'Productos',
+  components: {
+    BannerProducts
+  }
 }
 </script>
 
