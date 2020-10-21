@@ -1,46 +1,46 @@
 <template>
-  <main>
+  <section class="wrapper__products">
     <b-container>
       <b-row>
         <b-col cols="12">
-          <h1 class="text-center m-5">
-            Nuestros servicios
+          <h1 class="text-center m-5 text-light">
+            Nuestros productos
           </h1>
         </b-col>
       </b-row>
       <b-row>
         <b-col cols="12" class="grid__card">
           <b-card
-            v-for="service in getFilterDocumentsServices"
-            :key="service.id"
-            :title="service.nombre"
-            :img-src="service.imagen"
+            v-for="product in getFilterDocumentsProducts"
+            :key="product.id"
+            :title="product.nombre"
+            :img-src="product.imagen"
             img-alt="Foto del servicio"
             img-top
           >
             <b-card-text>
-              {{ service.descripcion }}
+              {{ product.descripcion }}
             </b-card-text>
             <template v-slot:footer>
-              <strong class="text-right d-block">{{ service.precio | price }}</strong>
+              <strong class="text-right d-block">{{ product.precio | price }}</strong>
             </template>
           </b-card>
         </b-col>
       </b-row>
       <b-row>
         <b-col cols="12" class="text-center">
-          <b-btn variant="primary" class="m-5" to="/servicios">
-            Ver servicios
+          <b-btn variant="primary" class="m-5" to="/productos">
+            Ver productos
           </b-btn>
         </b-col>
       </b-row>
     </b-container>
-  </main>
+  </section>
 </template>
 
 <script>
 export default {
-  name: 'Services',
+  name: 'Products',
   filters: {
     price (value) {
       if (isNaN(value)) {
@@ -50,8 +50,8 @@ export default {
     }
   },
   computed: {
-    getFilterDocumentsServices () {
-      return this.$store.getters.getFilterDocuments('services')
+    getFilterDocumentsProducts () {
+      return this.$store.getters.getFilterDocuments('products')
     }
   }
 }
@@ -62,5 +62,10 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fill,minmax(20rem,1fr));
   gap: 2rem;
+}
+.wrapper__products{
+  background-image: url("../assets/media/fondo_products.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>

@@ -5,10 +5,17 @@ export default {
   getStateSpiner (state) {
     return state.stateSpiner
   },
-  getFilterDocuments (state) {
+  getFilterDocuments: state => (payload) => {
     const data = []
-    for (let i = 0; i < 3; i++) {
-      data.push(state.services[i])
+    if (payload === 'services') {
+      for (let i = 0; i < 3; i++) {
+        data.push(state.services[i])
+      }
+    }
+    if (payload === 'products') {
+      for (let i = 0; i < 3; i++) {
+        data.push(state.products[i])
+      }
     }
     return data
   }
