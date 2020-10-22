@@ -12,5 +12,9 @@ export default () => ({
    * STORE CONTACT
    */
   contact: [],
+  /**
+   * STORE POSTS
+   */
+  posts: [],
   stateSpiner: null
 })

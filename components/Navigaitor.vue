@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid>
+  <b-container fluid class="mb-5">
     <b-row>
       <b-col class="p-0">
         <b-navbar toggleable="md" type="light" class="main--nav" fixed="top">

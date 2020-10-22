@@ -79,6 +79,16 @@ export default {
       if (payload.payload === 'productos') {
         commit('SET_DOCUMENT_PRODUCT', temp)
       }
+      /**
+       * IF IT'S BLOG
+       */
+      if (payload.payload === 'blog') {
+        // REVERT DATE
+        temp.forEach((post) => {
+          post.precio = post.precio.split('-').reverse().join('-')
+        })
+        commit('SET_DOCUMENT_POST', temp)
+      }
     } catch (e) {
       commit('SET_ERROR', e)
     }
@@ -106,7 +116,7 @@ export default {
   async udpateDocument ({ commit }, payload) {
     try {
       const { id, nombre, precio, descripcion, imagen } = { ...payload }
-      await this.$fireStore.collection(payload.collection).doc(payload.id).update({
+      await this.$fireStore.collection(payload.collection).doc(id).update({
         id,
         nombre,
         precio,

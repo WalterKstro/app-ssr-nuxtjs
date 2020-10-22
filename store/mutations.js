@@ -41,7 +41,7 @@ export default {
    */
   DELETE_DOCUMENT (state, { id, payload }) {
     /**
-     * IT'S SERVICES DELETE
+     * IT'S PAYLOAD IS SERVICES DELETE
      */
     if (payload === 'servicios') {
       const index = state.services.findIndex((doc) => {
@@ -50,7 +50,7 @@ export default {
       state.services.splice(index, 1)
     }
     /**
-     * IT'S PRODUCTS DELETE
+     * IT'S PAYLOAD IS PRODUCTS DELETE
      */
     if (payload === 'productos') {
       const index = state.products.findIndex((doc) => {
@@ -58,11 +58,23 @@ export default {
       })
       state.products.splice(index, 1)
     }
+    /**
+     * IT´S PAYLOAD IS CONTACT DELETE
+     */
     if (payload === 'contact') {
       const index = state.contact.findIndex((doc) => {
         return doc.id === id
       })
       state.contact.splice(index, 1)
+    }
+    /**
+     * IT'S PAYLOAD IS BLOG DELETE
+     */
+    if (payload === 'blog') {
+      const index = state.posts.findIndex((doc) => {
+        return doc.id === id
+      })
+      state.posts.splice(index, 1)
     }
   },
   /**
@@ -73,5 +85,14 @@ export default {
    */
   SET_MESSAGE (state, payload) {
     state.contact = payload
+  },
+  /**
+   * SET ALL DOCUMENTS TO STORE
+   * @param state
+   * @param payload
+   * @constructor
+   */
+  SET_DOCUMENT_POST (state, payload) {
+    state.posts = payload
   }
 }
