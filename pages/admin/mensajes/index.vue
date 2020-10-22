@@ -51,7 +51,7 @@ export default {
   layout: 'admin',
   data () {
     return {
-      fields: ['id', { key: 'first_name', label: 'Nombre' }, 'email', { key: 'message', label: 'Mensaje' }, { key: 'options', label: 'Operaciones' }],
+      fields: ['id', { key: 'first_name', label: 'Nombre' }, 'email', { key: 'message', label: 'Mensaje' }, { key: 'options', label: 'Borrar' }],
       loading: true,
       objService: null,
       response: ''

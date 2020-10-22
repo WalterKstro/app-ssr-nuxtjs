@@ -60,7 +60,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.footer__bottom{background-color: $dark;}
+.footer__bottom{ background-color: $dark;}
 .footer__brand{
   width: 20%;
 }
