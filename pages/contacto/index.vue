@@ -1,9 +1,16 @@
 <template>
   <section>
+    <b-container fluid>
+      <b-row>
+        <b-col cols="12" class="p-0">
+          <BannerContact />
+        </b-col>
+      </b-row>
+    </b-container>
     <b-container>
       <b-row>
         <b-col cols="12" md="6">
-          <h1 class="text-center my-3">
+          <h1 class="text-center my-5">
             Contactanos
           </h1>
           <b-form @submit.prevent="sendingMessage">
@@ -49,7 +56,7 @@
           </b-alert>
         </b-col>
         <b-col cols="12" md="6">
-          <h1 class="text-center my-3">
+          <h1 class="text-center my-5">
             Buscanos aquí
           </h1>
           <iframe
@@ -70,8 +77,12 @@
 
 <script>
 import { mapActions } from 'vuex'
+import BannerContact from '@/components/BannerContact'
 export default {
   name: 'Index',
+  components: {
+    BannerContact
+  },
   data () {
     return {
       contact: {
