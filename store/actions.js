@@ -83,10 +83,6 @@ export default {
        * IF IT'S BLOG
        */
       if (payload.payload === 'blog') {
-        // REVERT DATE
-        temp.forEach((post) => {
-          post.precio = post.precio.split('-').reverse().join('-')
-        })
         commit('SET_DOCUMENT_POST', temp)
       }
     } catch (e) {

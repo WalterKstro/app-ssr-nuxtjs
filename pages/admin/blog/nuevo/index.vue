@@ -37,7 +37,13 @@
           </b-form-group>
           <b-form-group id="group_date" label-for="date">
             <label for="date">Seleccione una fecha: </label>
-            <b-form-datepicker id="date" v-model="post.precio" class="mb-2" />
+            <b-form-datepicker
+              id="date"
+              v-model="post.precio"
+              placeholder="Seleccione una fecha"
+              locale="es-GT"
+              class="mb-2"
+            />
           </b-form-group>
           <b-form-group id="group_imagen" label-for="imagen">
             <b-form-file
