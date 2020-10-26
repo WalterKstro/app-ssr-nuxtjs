@@ -11,7 +11,7 @@
       <b-row>
         <b-col cols="12" offset-md="2" md="8">
           <b-img :src="createCopyArray[0].imagen" fluid alt="Imagen del post" />
-          <small class="text-muted text-right d-block font-weight-lighter"><b-icon icon="calendar" /> {{ createCopyArray[0].precio | reverseDate }}</small>
+          <small class="text-muted text-right d-block font-weight-lighter m-1"><b-icon icon="calendar" /> {{ createCopyArray[0].precio | reverseDate }}</small>
           <h2>{{ createCopyArray[0].nombre }}</h2>
           <p class="lead">
             {{ createCopyArray[0].descripcion }}

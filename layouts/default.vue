@@ -9,16 +9,16 @@
       <Nuxt />
     </main>
     <!--FOOTER-->
-    <footer class="footer__bottom mt-5">
+    <footer class="footer__bottom">
       <b-container>
         <b-row align-v="center">
           <b-col cols="12" md="6">
-            <div class="footer__brand py-2">
+            <div class="footer__brand py-1">
               <img src="@/assets/media/LogoSmall.svg" alt="Logo de la empresa">
             </div>
           </b-col>
           <b-col cols="12" md="6">
-            <div class="d-flex justify-content-end nav__bottom py-2">
+            <div class="d-flex justify-content-end nav__bottom py-1">
               <b-nav>
                 <b-nav-item v-for="link in links" :key="link.id" :to="link.path" class="nav__item">
                   {{ link.name }}
@@ -30,7 +30,7 @@
         <b-row>
           <b-col cols="12">
             <p class="text-center small">
-              &copy; Derechos Reservados,{{ date }} Vets & Pets
+              &copy; Derechos Reservados {{ date }} Vets & Pets
             </p>
           </b-col>
         </b-row>
@@ -60,7 +60,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.footer__bottom{ background-color: $dark;}
+.footer__bottom{
+  background-color: $dark;
+}
 .footer__brand{
   width: 20%;
 }

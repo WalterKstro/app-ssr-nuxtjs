@@ -8,7 +8,7 @@
             <!-- Right aligned nav items -->
             <b-navbar-nav class="d-flex flex-row justify-content-around social--icons">
               <b-btn v-b-toggle.sidebar-backdrop class="p-0 btn__sidebar">
-                <b-icon icon="grid3x3-gap" font-scale="2" class="btn-sidebar" />
+                <b-icon icon="list" font-scale="2" class="btn-sidebar" />
               </b-btn>
             </b-navbar-nav>
           </b-collapse>
