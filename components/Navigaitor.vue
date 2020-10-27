@@ -40,10 +40,11 @@ export default {
   data () {
     return {
       links: [
-        { name: 'Acerca', path: '/acerca' },
+        { name: 'Inicio', path: '/' },
         { name: 'Servicios', path: '/servicios' },
         { name: 'Productos', path: '/productos' },
         { name: 'Blog', path: '/blog' },
+        { name: 'Galeria', path: '/galeria' },
         { name: 'Contacto', path: '/contacto' }
       ]
     }

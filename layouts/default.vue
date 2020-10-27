@@ -49,7 +49,7 @@ export default {
     return {
       date: new Date().getFullYear(),
       links: [
-        { name: 'Acerca', path: '/acerca' },
+        { name: 'Acerca', path: '/galeria' },
         { name: 'Servicios', path: '/servicios' },
         { name: 'Productos', path: '/productos' },
         { name: 'Blog', path: '/blog' },

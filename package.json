@@ -22,6 +22,7 @@
     "js-cookie": "^2.2.1",
     "jwt-decode": "^3.0.0",
     "nuxt": "^2.14.6",
+    "vue-gallery-slideshow": "^1.5.2",
     "vue-slick-carousel": "^1.0.6"
   },
   "devDependencies": {
