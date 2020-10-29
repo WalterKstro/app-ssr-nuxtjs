@@ -13,12 +13,14 @@
           <b-card
             v-for="product in getFilterDocumentsProducts"
             :key="product.id"
-            :title="product.nombre"
             :img-src="product.imagen"
             img-alt="Foto del servicio"
             img-top
           >
-            <b-card-text>
+            <b-card-title class="h5">
+              {{ product.nombre }}
+            </b-card-title>
+            <b-card-text class="text__description">
               {{ product.descripcion }}
             </b-card-text>
             <template v-slot:footer>
@@ -68,4 +70,7 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
 }
+.text__description{font-size: 0.9rem;}
+.card-body{padding: 0.7rem;}
+.card-footer{padding: 0.3rem 0.7rem;}
 </style>

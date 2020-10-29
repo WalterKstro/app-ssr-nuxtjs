@@ -13,12 +13,14 @@
           <b-card
             v-for="service in getFilterDocumentsServices"
             :key="service.id"
-            :title="service.nombre"
             :img-src="service.imagen"
             img-alt="Foto del servicio"
             img-top
           >
-            <b-card-text>
+            <b-card-title class="h5">
+              {{ service.nombre }}
+            </b-card-title>
+            <b-card-text class="text__description">
               {{ service.descripcion }}
             </b-card-text>
             <template v-slot:footer>
@@ -63,4 +65,7 @@ export default {
   grid-template-columns: repeat(auto-fill,minmax(20rem,1fr));
   gap: 2rem;
 }
+.text__description{font-size: 0.9rem;}
+.card-body{padding: 0.7rem;}
+.card-footer{padding: 0.3rem 0.7rem;}
 </style>
