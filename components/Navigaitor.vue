@@ -20,7 +20,7 @@
             <!-- Right aligned nav items -->
             <!--SOCIAL NAV-->
             <b-navbar-nav class="d-flex flex-row justify-content-around social--icons ml-md-auto">
-              <b-nav-item class="social--icons_link">
+              <b-nav-item class="social--icons_link" :href="facebook" target="_blank">
                 <img src="@/assets/media/facebook.svg" alt="Logo de la empresa">
               </b-nav-item>
               <b-nav-item class="social--icons_link">
@@ -46,7 +46,8 @@ export default {
         { name: 'Blog', path: '/blog' },
         { name: 'Galeria', path: '/galeria' },
         { name: 'Contacto', path: '/contacto' }
-      ]
+      ],
+      facebook: 'https://www.facebook.com/Clinica-Veterinaria-Vets-and-Pets-618779588161715'
     }
   }
 }

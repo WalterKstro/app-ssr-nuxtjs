@@ -51,6 +51,7 @@
               placeholder="Seleccione una imagen"
               @change="setProduct($event)"
             />
+            <small id="emailHelp" class="form-text text-muted">Tamaño de imagen 380x250</small>
           </b-form-group>
           <b-button type="submit" variant="primary" :disabled="objUpdate.file === null">
             Guardar

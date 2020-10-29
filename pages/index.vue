@@ -67,11 +67,11 @@ export default {
     return {
       numSlides: 9,
       comments: [
-        { name: 'Yulianna De León', comment: 'Estoy muy satisfecha por la atención por línea que me brindaron. Mi gatita quedó espectacular, sin duda seré cliente frecuente. ¡Muchas gracias !' },
-        { name: 'Cris Ruyán', comment: 'Excelente clínica siempre nos han atendido bien y tienen un trato especial con los animalitos' },
-        { name: 'Ivi Celada', comment: 'El trato para las mascotas es excelente' },
-        { name: 'Mayie Reyies', comment: 'El excelente servicio y cuidado hacia las moscotas.' },
-        { name: 'Rociio Orellana', comment: 'La mejor de todas realmente, no cambio esta clínica por ninguna otra!!' }
+        { name: 'Yulianna De León', comment: '"Estoy muy satisfecha por la atención por línea que me brindaron. Mi gatita quedó espectacular, sin duda seré cliente frecuente. ¡Muchas gracias !"' },
+        { name: 'Cris Ruyán', comment: '"Excelente clínica siempre nos han atendido bien y tienen un trato especial con los animalitos"' },
+        { name: 'Ivi Celada', comment: '"El trato para las mascotas es excelente"' },
+        { name: 'Mayie Reyies', comment: '"El excelente servicio y cuidado hacia las moscotas."' },
+        { name: 'Rociio Orellana', comment: '"La mejor de todas realmente, no cambio esta clínica por ninguna otra!!"' }
       ]
     }
   },
