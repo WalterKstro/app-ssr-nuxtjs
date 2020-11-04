@@ -1,7 +1,13 @@
 <template>
-  <h1 v-if="currentAccount != null">
-    {{ currentAccount.email }}
-  </h1>
+  <b-container>
+    <b-row>
+      <b-col cols="12">
+        <h1 v-if="currentAccount != null">
+          {{ currentAccount.email }}
+        </h1>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
