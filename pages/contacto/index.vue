@@ -104,6 +104,16 @@ export default {
           this.contact.email = ''
         })
     }
+  },
+  head: {
+    title: 'Vets & Pets | Contacto',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Contactanos sera un gusto atenderte'
+      }
+    ]
   }
 }
 </script>

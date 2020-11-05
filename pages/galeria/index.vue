@@ -44,6 +44,16 @@ export default {
       ],
       index: null
     }
+  },
+  head: {
+    title: 'Vets & Pets | Galeria',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Te mostramos todo el trabajo que dia con dia realizamos con mucho entusiasmo'
+      }
+    ]
   }
 }
 </script>

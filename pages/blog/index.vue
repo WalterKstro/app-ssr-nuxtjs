@@ -62,6 +62,16 @@ export default {
       const path = id.toLowerCase().split(' ').join('-')
       this.$router.push(`/blog/${path}`)
     }
+  },
+  head: {
+    title: 'Vets & Pets | Blog',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Encuentra articulos que te ayudaran en cuidar a tu mascota'
+      }
+    ]
   }
 }
 </script>

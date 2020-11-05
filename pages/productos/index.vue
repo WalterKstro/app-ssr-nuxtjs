@@ -57,6 +57,16 @@ export default {
   },
   methods: {
     ...mapActions(['selectDocuments'])
+  },
+  head: {
+    title: 'Vets & Pets | Productos',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Contamos con esos productos que necesitas para tu mascota, concentrado, jueguetes, shampo, collares, accesorios entre muchos mas'
+      }
+    ]
   }
 }
 </script>

@@ -57,6 +57,16 @@ export default {
   },
   methods: {
     ...mapActions(['selectDocuments'])
+  },
+  head: {
+    title: 'Vets & Pets | Servicios',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Contamos con toda una variedad de servicios veterinarios para la salud de tu mascota'
+      }
+    ]
   }
 }
 </script>
