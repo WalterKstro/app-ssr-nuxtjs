@@ -38,6 +38,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
+    '@nuxtjs/sitemap',
     '@nuxtjs/style-resources',
     [
       '@nuxtjs/firebase',
@@ -73,6 +74,17 @@ export default {
       }
     ]
   ],
+  sitemap: {
+    hostname: 'https://www.clinicavetsandpets.com/',
+    gzip: true,
+    exclude: [
+      '/login',
+      '/admin/**'
+    ],
+    routes: [
+      '/blog/:id'
+    ]
+  },
   bootstrapVue: {
     icons: true // Install the IconsPlugin (in addition to BootStrapVue plugin)
   },
