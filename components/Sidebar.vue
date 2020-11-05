@@ -2,7 +2,6 @@
   <b-sidebar
     id="sidebar-backdrop"
     title="Clinica Veterinaria"
-    :backdrop-variant="variant"
     backdrop
     shadow
   >
@@ -11,6 +10,7 @@
         <nav class="mb-3">
           <b-nav vertical>
             <b-nav-item v-for="link in links" :key="link.id" :to="link.path">
+              <b-icon :icon="link.icon" />
               {{ link.name }}
             </b-nav-item>
           </b-nav>
@@ -19,7 +19,7 @@
     </template>
     <template v-slot:footer>
       <div class="d-flex align-items-center px-3 py-2">
-        <b-button size="sm" @click="closeSession">
+        <b-button size="sm" variant="primary" @click="closeSession">
           <b-icon icon="power" />
           Cerrar sessión
         </b-button>
@@ -36,11 +36,11 @@ export default {
     return {
       variant: 'dark',
       links: [
-        { name: 'Servicios', path: '/admin/servicios' },
-        { name: 'Productos', path: '/admin/productos' },
-        { name: 'Mensajes', path: '/admin/mensajes' },
-        { name: 'Blog', path: '/admin/blog' },
-        { name: 'Crear usuario', path: '/admin/cuenta' }
+        { name: 'Servicios', path: '/admin/servicios', icon: 'briefcase' },
+        { name: 'Productos', path: '/admin/productos', icon: 'basket' },
+        { name: 'Mensajes', path: '/admin/mensajes', icon: 'chat-left-text' },
+        { name: 'Blog', path: '/admin/blog', icon: 'file-font' },
+        { name: 'Crear usuario', path: '/admin/cuenta', icon: 'person-plus' }
       ]
     }
   },
@@ -51,7 +51,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

@@ -15,7 +15,7 @@
           </h2>
         </b-col>
       </b-row>
-      <b-row>
+      <b-row class="my-5">
         <b-col cols="12" class="grid__card">
           <b-card
             v-for="post in posts"

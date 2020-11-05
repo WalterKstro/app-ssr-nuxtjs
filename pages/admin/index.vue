@@ -2,9 +2,7 @@
   <b-container>
     <b-row>
       <b-col cols="12">
-        <h1 v-if="currentAccount != null">
-          {{ currentAccount.email }}
-        </h1>
+        <span />
       </b-col>
     </b-row>
   </b-container>
