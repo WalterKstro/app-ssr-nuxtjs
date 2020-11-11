@@ -64,12 +64,12 @@ export default {
     }
   },
   head: {
-    title: 'Vets & Pets | Blog',
+    title: 'Centro veterinario Vets & Pets | Artículos veterinarios',
     meta: [
       {
         hid: 'description',
         name: 'description',
-        content: 'Encuentra articulos que te ayudaran en cuidar a tu mascota'
+        content: 'Encuentra articulos y recomendaciones, que te ayudarán a como cuidar de tú mascota'
       }
     ]
   }

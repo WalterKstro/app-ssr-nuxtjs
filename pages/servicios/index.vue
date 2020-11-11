@@ -59,12 +59,12 @@ export default {
     ...mapActions(['selectDocuments'])
   },
   head: {
-    title: 'Vets & Pets | Servicios',
+    title: 'Centro veterinario Vets & Pets | Servicios veterinarios',
     meta: [
       {
         hid: 'description',
         name: 'description',
-        content: 'Contamos con toda una variedad de servicios veterinarios para la salud de tu mascota'
+        content: 'Contamos con toda una variedad de servicios veterinarios para la salud de tú mascota con médicos profesionales egresados de la USAC'
       }
     ]
   }

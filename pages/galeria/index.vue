@@ -46,12 +46,12 @@ export default {
     }
   },
   head: {
-    title: 'Vets & Pets | Galeria',
+    title: 'Centro veterinario Vets & Pets | Galeria de nuestro trabajo',
     meta: [
       {
         hid: 'description',
         name: 'description',
-        content: 'Te mostramos todo el trabajo que dia con dia realizamos con mucho entusiasmo'
+        content: 'Te mostramos todo el cariño que le damos a nuestros mejores amigos, nuestras mascotas'
       }
     ]
   }

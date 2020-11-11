@@ -77,6 +77,16 @@ export default {
   },
   computed: {
     ...mapState(['stateSpiner'])
+  },
+  head: {
+    title: 'Vets & Pets | Servicios',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Hospital veterinario vets & pets, ofreciendole toda una gama de servicios y productos para el bienestar de tú mascota'
+      }
+    ]
   }
 }
 </script>

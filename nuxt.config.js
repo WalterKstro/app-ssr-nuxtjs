@@ -1,11 +1,11 @@
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'Vets & Pets',
+    title: 'Centro veterinario Vets & Pets',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Clinica veterinaira Vets and Pets, atendiendo a tus mascotas' }
+      { hid: 'description', name: 'description', content: '' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -79,10 +79,8 @@ export default {
     gzip: true,
     exclude: [
       '/login',
-      '/admin/**'
-    ],
-    routes: [
-      '/blog/:id'
+      '/admin/**',
+      '/admin'
     ]
   },
   bootstrapVue: {

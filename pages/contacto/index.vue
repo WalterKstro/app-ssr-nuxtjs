@@ -106,12 +106,12 @@ export default {
     }
   },
   head: {
-    title: 'Vets & Pets | Contacto',
+    title: 'Centro veterinario Vets & Pets | Contactanos',
     meta: [
       {
         hid: 'description',
         name: 'description',
-        content: 'Contactanos sera un gusto atenderte'
+        content: 'En la clínica vets & pets, siempre estamos para servirte en todo momento'
       }
     ]
   }

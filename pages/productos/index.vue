@@ -59,12 +59,12 @@ export default {
     ...mapActions(['selectDocuments'])
   },
   head: {
-    title: 'Vets & Pets | Productos',
+    title: 'Centro veterinario Vets & Pets | Productos veterinarios',
     meta: [
       {
         hid: 'description',
         name: 'description',
-        content: 'Contamos con esos productos que necesitas para tu mascota, concentrado, jueguetes, shampo, collares, accesorios entre muchos mas'
+        content: 'Ponemos a tú disposición toda una variedad de productos veterinarios, de las marcas mas reconocidas'
       }
     ]
   }
