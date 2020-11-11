@@ -39,6 +39,7 @@ export default {
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
     '@nuxtjs/sitemap',
+    '@nuxtjs/recaptcha',
     '@nuxtjs/style-resources',
     [
       '@nuxtjs/firebase',
@@ -82,6 +83,12 @@ export default {
       '/admin/**',
       '/admin'
     ]
+  },
+  recaptcha: {
+    hideBadge: false, // Hide badge element (v3 & v2 via size=invisible)
+    siteKey: '6LcWluEZAAAAAJLqFUKA-8j6xRGzgfuHCTmd0AJE', // Site key for requests
+    version: 2, // Version
+    size: 'normal' // Size: 'compact', 'normal', 'invisible' (v2)
   },
   bootstrapVue: {
     icons: true // Install the IconsPlugin (in addition to BootStrapVue plugin)

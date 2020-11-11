@@ -13,7 +13,7 @@
           <h1 class="text-center my-5">
             Contactanos
           </h1>
-          <b-form @submit.prevent="sendingMessage">
+          <b-form ref="form" @submit.prevent="sendingMessage">
             <b-form-group
               id="name"
               label="Nombre:"
@@ -47,6 +47,7 @@
                 placeholder="Escribe tú mensaje aquí"
               />
             </b-form-group>
+            <recaptcha @error="onError" @success="onSuccess" @expired="onExpired" />
             <b-button type="submit" variant="primary">
               Enviar
             </b-button>
@@ -95,14 +96,32 @@ export default {
   },
   methods: {
     ...mapActions(['createContact']),
-    sendingMessage () {
-      this.createContact(this.contact)
-        .then((r) => {
-          r !== null && r !== undefined ? this.stateMessage = true : this.stateMessage = false
-          this.contact.message = ''
-          this.contact.first_name = ''
-          this.contact.email = ''
-        })
+    async sendingMessage () {
+      try {
+        const token = await this.$recaptcha.getResponse()
+        console.log('ReCaptcha token:', token)
+        await this.$recaptcha.reset()
+        this.createContact(this.contact)
+          .then((r) => {
+            r !== null && r !== undefined ? this.stateMessage = true : this.stateMessage = false
+            this.contact.message = ''
+            this.contact.first_name = ''
+            this.contact.email = ''
+          })
+      } catch (e) {
+        console.log('Login error:', e)
+      }
+    },
+    onError (error) {
+      console.log('Error happened:', error)
+    },
+    onSuccess (token) {
+      console.log('Succeeded:', token)
+      // here you submit the form
+      this.$refs.form.submit()
+    },
+    onExpired () {
+      console.log('Expired')
     }
   },
   head: {

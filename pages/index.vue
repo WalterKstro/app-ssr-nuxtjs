@@ -79,7 +79,7 @@ export default {
     ...mapState(['stateSpiner'])
   },
   head: {
-    title: 'Vets & Pets | Servicios',
+    title: 'Centro veterinario Vets & Pets',
     meta: [
       {
         hid: 'description',
