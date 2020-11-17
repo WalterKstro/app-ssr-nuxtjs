@@ -6,7 +6,7 @@
         Artículos del blog
       </h1>
       <p class="text-light">
-        Este blog esta pensado para tratar temas que le permitan conocer, la importancia de prestarle cualquier anomalia que su mascota presente
+        Este blog está pensado para tratar temas que le permitan conocer, la importancia de prestarle cualquier anomalía que su mascota presente
       </p>
     </div>
   </aside>

@@ -6,7 +6,7 @@
         Productos y accesorios
       </h1>
       <p class="text-light">
-        En clinica vets & pets contamos con todo una gama de accesorios y productos pensados especialmente en la comodida, alimentacion y diversion de su mascota, todos de marcas reconocidas
+        En clínica vets & pets contamos con toda una gama de accesorios y productos pensados especialmente en la comodidad, alimentación y diversión de su mascota, todos de marcas reconocidas
       </p>
     </div>
   </aside>

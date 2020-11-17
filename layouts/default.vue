@@ -49,10 +49,11 @@ export default {
     return {
       date: new Date().getFullYear(),
       links: [
-        { name: 'Acerca', path: '/galeria' },
+        { name: 'Inicio', path: '/' },
         { name: 'Servicios', path: '/servicios' },
         { name: 'Productos', path: '/productos' },
         { name: 'Blog', path: '/blog' },
+        { name: 'Galería', path: '/galeria' },
         { name: 'Contacto', path: '/contacto' }
       ]
     }

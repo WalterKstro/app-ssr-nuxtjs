@@ -44,7 +44,7 @@ export default {
         { name: 'Servicios', path: '/servicios' },
         { name: 'Productos', path: '/productos' },
         { name: 'Blog', path: '/blog' },
-        { name: 'Galeria', path: '/galeria' },
+        { name: 'Galería', path: '/galeria' },
         { name: 'Contacto', path: '/contacto' }
       ],
       facebook: 'https://www.facebook.com/Clinica-Veterinaria-Vets-and-Pets-618779588161715'

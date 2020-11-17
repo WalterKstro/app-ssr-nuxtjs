@@ -11,7 +11,7 @@
       <b-row>
         <b-col cols="12">
           <h2 class="my-md-3">
-            Últimos articulos
+            Últimos artículos
           </h2>
         </b-col>
       </b-row>

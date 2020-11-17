@@ -3,10 +3,10 @@
     <b-img src="../assets/banner/bannerGallery.jpg" fluid alt="Galeria" />
     <div class="description ml-md-5 px-1">
       <h1 class="text-light underline">
-        Nuestra galeria
+        Nuestra galería
       </h1>
       <p class="text-light">
-        Acercate a hechar un vistazo, a nuestra labor que con todo el entusiasmo del mundo realizamos dia a dia
+        Acércate a echar un vistazo, a nuestra labor que con todo el entusiasmo del mundo realizamos día a día
       </p>
     </div>
   </aside>
